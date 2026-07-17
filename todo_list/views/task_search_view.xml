@@ -1,0 +1,19 @@
+   <odoo> <record id="task_view_search" model="ir.ui.view">
+        <field name="name">Task search</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="is_new" string="New" domain="[('status','=','new')]"/>
+                <filter name="is_in_progress" string="In Progress" domain="[('status','=','in_progress')]"/>
+                <filter name="is_completed" string="Completed" domain="[('status','=','completed')]"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="assigned_to" string="Assigned To" context="{'group_by': 'assigned_to'}"/>
+                    <filter name="due_date" string="Due Date" context="{'group_by': 'due_date'}"/>
+                </group>
+            </search>
+
+        </field>
+    </record>
+</odoo>

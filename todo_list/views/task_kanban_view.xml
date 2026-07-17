@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="task_kanban_view" model="ir.ui.view">
+        <field name="name">todo.task.kanban</field>
+        <field name="model">todo.task</field>
+
+        <field name="arch" type="xml">
+            <kanban>
+
+                <field name="name"/>
+                <field name="description"/>
+                <field name="assigned_to" />
+                <field name="due_date"/>
+                <field name="status"/>
+
+                <templates>
+                    <t t-name="card">
+
+                        <div class="oe_kanban_global_click">
+
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+
+                            <br/>
+                            <field name="description"/>
+                            <br/>
+
+                            <field name="assigned_to" />
+
+                            <br/>
+
+                            <b>Assigned To:</b>
+                            <field name="assigned_to" widget="many2one_avatar_user"/>
+
+                            <br/>
+
+                            <b>Due Date:</b>
+                            <field name="due_date"/>
+
+                            <br/>
+
+                            <field name="status" widget="badge"/>
+
+                        </div>
+
+                    </t>
+                </templates>
+
+            </kanban>
+        </field>
+    </record>
+
+</odoo>
