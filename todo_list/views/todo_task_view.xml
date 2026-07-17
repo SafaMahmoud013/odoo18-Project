@@ -13,6 +13,7 @@
                 <field name="due_date"/>
                 <field name="status" widget="statusbar"
                        statusbar_visible="new,in_progress,completed,cancelled"/>
+                <field name="priority" widget="badge"/>
             </list>
 
         </field>
@@ -42,7 +43,7 @@
                         <field name="assigned_to"/>
                         <field name="due_date"/>
                         <field name="status" widget="statusbar"/>
-
+                        <field name="priority"/>
                     </group>
 
                     <group string="Additional Information">
@@ -57,27 +58,6 @@
         </field>
 
     </record>
-
-    <!-- <record id="todo_task_view_search" model="ir.ui.view">
-         <field name="name">Task search</field>
-         <field name="model">todo.task</field>
-         <field name="arch" type="xml">
-             <search>
-                 <field name="name"/>
-                 <filter name="is_new" string="New" domain="[('status','=','new')]"/>
-                 <filter name="is_in_progress" string="In Progress" domain="[('status','=','in_progress')]"/>
-                 <filter name="is_completed" string="Completed" domain="[('status','=','completed')]"/>
-
-                 <group expand="0" string="Group By">
-                     <filter name="assigned_to" string="Assigned To" context="{'group_by': 'assigned_to'}"/>
-                     <filter name="due_date" string="Due Date" context="{'group_by': 'due_date'}"/>
-                 </group>
-             </search>
-
-         </field>
-     </record>
- -->
-
 
     <record id="todo_action" model="ir.actions.act_window">
         <field name="name">Todo Task</field>

@@ -10,41 +10,52 @@
 
                 <field name="name"/>
                 <field name="description"/>
-                <field name="assigned_to" />
+                <field name="assigned_to"/>
                 <field name="due_date"/>
                 <field name="status"/>
 
                 <templates>
                     <t t-name="card">
+                        <div class="oe_kanban_global_click p-3 border rounded">
 
-                        <div class="oe_kanban_global_click">
-
-                            <strong>
+                            <h5 class="mb-2">
+                                <i class="fa fa-tasks me-2"/>
                                 <field name="name"/>
-                            </strong>
+                            </h5>
 
-                            <br/>
-                            <field name="description"/>
-                            <br/>
+                            <div class="mb-2">
+                                <i class="fa fa-align-left me-2 text-secondary"/><!-- text-secondary make font color grey-->
+                                <b>Description:</b>
+                                <br/>
+                                <field name="description"/>
+                            </div>
 
-                            <field name="assigned_to" />
+                            <hr/>
 
-                            <br/>
+                            <div class="mb-2">
+                                <i class="fa fa-user me-2 text-primary"/>
+                                <b>Assigned To:</b>
+                                <field name="assigned_to"/>
+                            </div>
 
-                            <b>Assigned To:</b>
-                            <field name="assigned_to" widget="many2one_avatar_user"/>
+                            <div class="mb-2">
+                                <i class="fa fa-calendar me-2 text-danger"/>
+                                <b>Due Date:</b>
+                                <field name="due_date"/>
+                            </div>
 
-                            <br/>
+                            <div class="mb-2">
+                                <i class="fa fa-flag me-2 text-success"/>
+                                <b>Status:</b>
+                                <field name="status" widget="badge"/>
+                            </div>
 
-                            <b>Due Date:</b>
-                            <field name="due_date"/>
-
-                            <br/>
-
-                            <field name="status" widget="badge"/>
-
+                            <div class="mb-2">
+                                <i class="fa fa-star me-2 text-warning"/>
+                                <b>Priority:</b>
+                                <field name="priority" widget="badge"/>
+                            </div>
                         </div>
-
                     </t>
                 </templates>
 

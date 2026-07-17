@@ -17,6 +17,11 @@ class TodoTask(models.Model):
     ],
         default='new'
     )
+    priority = fields.Selection([
+        ('0', 'Low'),
+        ('1', 'Medium'),
+        ('2', 'High'),
+    ], string="Priority", default='1')
 
 class TodoEmployee(models.Model):
     _name = "todo.employee"
