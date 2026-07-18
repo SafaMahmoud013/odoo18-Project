@@ -13,10 +13,21 @@
                 <field name="assigned_to"/>
                 <field name="due_date"/>
                 <field name="status"/>
+                <field name="is_overdue"/>
 
                 <templates>
                     <t t-name="card">
-                        <div class="oe_kanban_global_click p-3 border rounded">
+                        <div t-attf-class="oe_kanban_global_click p-3 rounded shadow-sm border-start
+                        border-4
+                        {{
+                             record.status.raw_value == 'new'
+                               ? 'border-success'
+
+                               : record.status.raw_value == 'in_progress'
+                               ? 'border-warning'
+
+                               : 'border-primary'
+                        }}">
 
                             <h5 class="mb-2">
                                 <i class="fa fa-tasks me-2"/>
@@ -38,7 +49,7 @@
                                 <field name="assigned_to"/>
                             </div>
 
-                            <div class="mb-2">
+                            <div t-attf-class="mb-2 {{ record.is_overdue.raw_value ? 'text-danger fw-bold' : '' }}">
                                 <i class="fa fa-calendar me-2 text-danger"/>
                                 <b>Due Date:</b>
                                 <field name="due_date"/>

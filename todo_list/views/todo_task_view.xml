@@ -42,7 +42,7 @@
                     <group string="General Information">
                         <field name="assigned_to"/>
                         <field name="due_date"/>
-                        <field name="status" widget="statusbar"/>
+                        <field name="status" widget="statusbar" options="{'clickable':True}"/>
                         <field name="priority"/>
                     </group>
 
