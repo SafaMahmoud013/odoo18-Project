@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_employee_form_payroll" model="ir.ui.view">
+        <field name="name">hr.employee.form.payroll</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+
+                <page string="HR Information">
+
+                    <group>
+
+                        <group>
+                            <field name="employee_code"/>
+                            <field name="employment_date"/>
+                            <field name="birth_date"/>
+                        </group>
+
+                        <group>
+                            <field name="national_id"/>
+                            <field name="passport_number"/>
+                            <field name="insurance_number"/>
+                        </group>
+
+                    </group>
+
+                    <group string="Emergency Information">
+
+                        <group>
+                            <field name="emergency_contact"/>
+                            <field name="emergency_phone"/>
+                        </group>
+
+                        <group>
+                            <field name="blood_type"/>
+                            <field name="marital_status"/>
+                        </group>
+
+                    </group>
+
+                </page>
+
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>
