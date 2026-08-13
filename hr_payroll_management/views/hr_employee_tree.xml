@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_employee_tree_payroll" model="ir.ui.view">
+
+        <field name="name">hr.employee.tree.payroll</field>
+
+        <field name="model">hr.employee</field>
+
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//list" position="replace">
+
+                <list>
+
+                    <field name="employee_code"/>
+
+                    <field name="name"/>
+
+                    <field name="national_id"/>
+
+                    <field name="department_id"/>
+
+                    <field name="job_id"/>
+
+                    <field name="employment_date"/>
+
+                    <field name="active"/>
+
+                </list>
+
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>

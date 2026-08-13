@@ -7,7 +7,9 @@
 
     "data": [
         'data/employee_sequence.xml',
-        'views/hr_employee_views.xml'
+        'views/hr_employee_views.xml',
+        'views/hr_employee_tree.xml',
+        'views/hr_employee_search_view.xml',
     ],
 
     "application": True,

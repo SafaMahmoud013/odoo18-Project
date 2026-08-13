@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="view_employee_search_payroll" model="ir.ui.view">
+
+        <field name="name">hr.employee.search.payroll</field>
+
+        <field name="model">hr.employee</field>
+
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//search/field[@name='name']" position="after">
+
+                <field name="employee_code"/>
+                <field name="national_id"/>
+
+            </xpath>
+
+            <xpath expr="//search/separator[1]" position="after">
+
+                <filter
+                        name="active_employees"
+                        string="Active Employees"
+                        domain="[('active', '=', True)]"
+                />
+
+                <filter
+                        name="inactive_employees"
+                        string="Inactive Employees"
+                        domain="[('active', '=', False)]"
+                />
+                <separator/>
+
+                <filter
+                        name="has_national_id"
+                        string="Has National ID"
+                        domain="[('national_id', '!=', False)]"
+                />
+
+                <group expand="0" string="Group By">
+
+                    <filter
+                            name="group_department"
+                            string="Department"
+                            context="{'group_by': 'department_id'}"
+                    />
+
+                    <filter
+                            name="group_job"
+                            string="Job Position"
+                            context="{'group_by': 'job_id'}"
+                    />
+
+                    <filter
+                            name="group_active"
+                            string="Active Status"
+                            context="{'group_by': 'active'}"
+                    />
+
+                </group>
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>
