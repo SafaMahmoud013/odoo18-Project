@@ -69,6 +69,16 @@ class HrEmployee(models.Model):
         ('widowed', 'Widowed'),
     ], string="Marital Status")
 
+    employee_status = fields.Selection(
+        [
+            ('active', 'Active'),
+            ('inactive', 'Inactive'),
+        ],
+        string="Employee Status",
+        compute="_compute_employee_status",
+        store=True,
+    )
+
     @api.constrains('national_id')
     def _check_national_id(self):
         for employee in self:
@@ -80,7 +90,7 @@ class HrEmployee(models.Model):
 
                 if duplicate:
                     raise ValidationError(
-                        _("National ID already exists.")
+                        ("National ID already exists.")
                     )
 
     @api.model_create_multi
@@ -92,3 +102,18 @@ class HrEmployee(models.Model):
                 ) or "New"
 
         return super().create(vals_list)
+
+    @api.depends('active')
+    def _compute_employee_status(self):
+        for employee in self:
+            employee.employee_status = 'active' if employee.active else 'inactive'
+
+    @api.onchange('marital_status')
+    def _onchange_marital_status(self):
+        if self.marital_status == 'married':
+            return {
+                'warning': {
+                    'title': 'Marital Status',
+                    'message': 'Please make sure the employee emergency contact information is completed.'
+                }
+            }
